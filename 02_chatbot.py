@@ -1,7 +1,6 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-# import openai
 
 # Initialize chat history
 chat_history = []
@@ -11,9 +10,7 @@ load_dotenv()
 my_key = os.environ.get("OPENAI_API_KEY")
 
 # Initialize OpenAI client
-client = OpenAI(
-    api_key=my_key
-)
+client = OpenAI(api_key=my_key)
 
 
 # Function to send a message and maintain chat history
@@ -22,10 +19,7 @@ def send_message(user_input):
     chat_history.append({"role": "user", "content": user_input})
 
     # Add system role message
-    system_message = {
-        "role": "system",
-        "content": "you are a helpful assistant."
-    }
+    system_message = {"role": "system", "content": "you are a helpful assistant."}
 
     # Combine messages for the API call
     messages = [system_message] + chat_history
@@ -46,18 +40,20 @@ def send_message(user_input):
 
     return assistant_response
 
+
 # Chat loop
 def chat_cli():
     print("Welcome to the CLI chat assistant! Type 'exit' to quit.")
 
     while True:
         user_input = input("You: ")
-        if user_input.lower() == 'exit':
+        if user_input.lower() == "exit":
             print("Exiting the chat. Goodbye!")
             break
 
         response = send_message(user_input)
         print(f"Assistant: {response}\n")
+
 
 # Run the chat loop if this script is run directly
 if __name__ == "__main__":

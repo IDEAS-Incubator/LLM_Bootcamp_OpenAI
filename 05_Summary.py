@@ -1,16 +1,13 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-import openai
 
 # Load environment variables from .env file
 load_dotenv()
 my_key = os.environ.get("OPENAI_API_KEY")
 
 # Initialize OpenAI client
-client = OpenAI(
-    api_key=my_key
-)
+client = OpenAI(api_key=my_key)
 
 
 def summarize_article(article_text):
@@ -21,22 +18,24 @@ def summarize_article(article_text):
             f"{article_text}\n\n"
             "Summary:"
         )
-        
+
         # Call OpenAI's text completion endpoint
-        response = client.chat.completions.create(
-            model="text-davinci-003",
+        response = client.completions.create(
+            model="gpt-4o-mini",
             prompt=prompt,
+            temperature=0.5,
             max_tokens=150,  # Limit the summary length
-            temperature=0.5,  # Controls the randomness of the output
+            stream=False,
         )
-        
+
         # Extract and return the summary
-        summary = response.choices[0].message.content
+        summary = response.choices[0].text.strip()
 
         return summary
 
     except Exception as e:  # Catch generic exceptions
         return f"An error occurred: {e}"
+
 
 if __name__ == "__main__":
     # Example article text
@@ -45,7 +44,7 @@ if __name__ == "__main__":
     These models have been applied to a variety of tasks, such as language translation, summarization, and content creation. 
     The advancements in AI have sparked discussions about ethical use, accessibility, and the potential impact on various industries.
     """
-    
+
     # Generate and print the summary
     summary = summarize_article(article_text)
     print("Summary:")
