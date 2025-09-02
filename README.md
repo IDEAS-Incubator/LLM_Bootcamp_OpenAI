@@ -1,8 +1,4 @@
-# LLM Bootcamp OpenAI
-
-<p align="center">
-  <img src="https://blog.kakaocdn.net/dn/KMC4Q/btsD4sKdBD4/dzLn1N1MJX5ljk8s0RHPF0/img.png" alt="OpenAI Logo">
-</p>
+# LLM Bootcamp OpenAI Demo
 
 
 This repository contains a collection of Python scripts demonstrating various applications of OpenAI's API, including basic API calls, chatbots, sentiment analysis, SQL coding assistance, translation, and summarization.
@@ -22,8 +18,8 @@ This repository contains a collection of Python scripts demonstrating various ap
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/LLM_Bootcamp_OpenAI.git
-cd LLM_Bootcamp_OpenAI
+git clone https://github.com/IDEAS-Incubator/LLM_Bootcamp_OpenAI
+
 ```
 
 2. Create a virtual environment (recommended):
@@ -49,5 +45,5 @@ Each script in this repository demonstrates a different use case of the OpenAI A
 ```bash
 python script_name.py
 ```
-
+## Tips
 Make sure you have set up your OpenAI API key before running the scripts.
