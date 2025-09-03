@@ -9,8 +9,9 @@ This repository contains a collection of Python scripts demonstrating various ap
 - `02_chatbot.py` - Implementation of a simple chatbot using OpenAI's API
 - `03_SentimentAnalysis.py` - Sentiment analysis of text using OpenAI
 - `04_SQLCoding.py` - SQL query generation and assistance using OpenAI
-- `05_Translation.py` - Text translation using OpenAI
 - `05_Summary.py` - Text summarization using OpenAI
+- `06_Translation.py` - Text translation using OpenAI
+- 
 - `example.db` - SQLite database used for SQL coding examples
 - `requirements.txt` - Project dependencies
 
@@ -45,5 +46,6 @@ Each script in this repository demonstrates a different use case of the OpenAI A
 ```bash
 python script_name.py
 ```
+
 ## Tips
 Make sure you have set up your OpenAI API key before running the scripts.
