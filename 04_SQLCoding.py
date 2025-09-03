@@ -42,6 +42,9 @@ def setup_database():
         )
     )
 
+# we have 2 samples here to show SQL programming using OpenAI
+# Query - QuerySQL
+# Coding (text to SQL) - CodingSQL
 
 if __name__ == "__main__":
     # Uncomment to set up the database
