@@ -33,3 +33,7 @@ example.db
 *.png
 
 *.mp3
+
+!01_ALL_APIS/audio_file.mp3
+
+audio_file_transcription.txt
