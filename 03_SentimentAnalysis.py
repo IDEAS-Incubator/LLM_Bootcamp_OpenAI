@@ -51,8 +51,8 @@ def analyze_sentiment(text):
 
 if __name__ == "__main__":
     # Example usage
-    example_text = "I love how user-friendly and powerful OpenAI's tools are!"
-
+    # example_text = "I love how user-friendly and powerful OpenAI's tools are!"
+    example_text = "Your software does not work at all."
     # Analyze the sentiment
     sentiment_result = analyze_sentiment(example_text)
     print(f"Text: {example_text}")
