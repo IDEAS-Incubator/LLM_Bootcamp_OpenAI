@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import requests
 from PIL import Image
 import io
+from pathlib import Path
 
 load_dotenv()
 
@@ -84,24 +85,35 @@ def edit_image(image_path, mask_path, prompt, size="1024x1024"):
         return None
 
 
+def create_img_folder():
+    """Create img folder if it doesn't exist"""
+    img_folder = Path(__file__).parent / "img"
+    img_folder.mkdir(exist_ok=True)
+    return img_folder
+
+
 def download_image(url, filename):
-    """Download an image from URL and save it locally"""
+    """Download an image from URL and save it locally in img folder"""
     try:
         response = requests.get(url)
         response.raise_for_status()
 
+        # Create img folder and get full path
+        img_folder = create_img_folder()
+        file_path = img_folder / filename
+
         # Save the image
-        with open(filename, "wb") as f:
+        with open(file_path, "wb") as f:
             f.write(response.content)
 
-        print(f"Image downloaded and saved as: {filename}")
+        print(f"Image downloaded and saved as: {file_path}")
 
         # Display image info
-        image = Image.open(filename)
+        image = Image.open(file_path)
         print(f"Image size: {image.size}")
         print(f"Image mode: {image.mode}")
 
-        return filename
+        return str(file_path)
 
     except Exception as e:
         print(f"Error downloading image: {e}")
@@ -184,7 +196,10 @@ def different_sizes_example():
 
 if __name__ == "__main__":
     # Basic image generation
-    generate_image("A majestic dragon flying over a medieval castle at sunset")
+    print("=== Basic Image Generation ===")
+    url = generate_image("A majestic dragon flying over a medieval castle at sunset")
+    if url:
+        download_image(url, "majestic_dragon.png")
 
     print("\n" + "=" * 60 + "\n")
 

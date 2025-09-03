@@ -16,7 +16,7 @@ Comprehensive examples of all major OpenAI API endpoints:
 - `06_audio_transcription.py` - Speech-to-text transcription
 - `07_content_moderation.py` - Safety and compliance checking
 - `08_assistant_responses.py` - Tool-augmented AI agents
-- `09_realtime_interaction.py` - Low-latency multimodal experiences
+- `09_text_to_speech.py` - Text to Speech
 - `img/` - Generated images from image generation examples
 - `sample_audio_placeholder.txt` - Placeholder for audio transcription examples
 - `README.md` - Detailed documentation for API examples
