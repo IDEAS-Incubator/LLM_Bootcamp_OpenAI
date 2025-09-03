@@ -17,6 +17,7 @@ ENV/
 # Database
 *.db
 *.sqlite3
+*.db-journal
 
 # Logs
 *.log
