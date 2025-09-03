@@ -11,7 +11,8 @@ This repository contains a collection of Python scripts demonstrating various ap
 - `04_SQLCoding.py` - SQL query generation and assistance using OpenAI
 - `05_Summary.py` - Text summarization using OpenAI
 - `06_Translation.py` - Text translation using OpenAI
-- 
+- `07_Agent.py` - An Agent demo
+- `07_Agent_With_Tools.py` - An Agent demo
 - `example.db` - SQLite database used for SQL coding examples
 - `requirements.txt` - Project dependencies
 
