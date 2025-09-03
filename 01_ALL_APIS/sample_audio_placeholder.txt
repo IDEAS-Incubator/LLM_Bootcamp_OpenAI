@@ -1,0 +1,5 @@
+
+        This is a sample audio transcription demo.
+        The OpenAI Whisper model can transcribe audio files in various formats.
+        It supports multiple languages and can provide timestamps.
+        

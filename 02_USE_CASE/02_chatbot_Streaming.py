@@ -19,23 +19,37 @@ def send_message(user_input):
     chat_history.append({"role": "user", "content": user_input})
 
     # Add system role message
-    system_message = {"role": "system", "content": "you are a helpful data scientist interview assistant."}
+    system_message = {
+        "role": "system",
+        "content": "You are a helpful data scientist interview assistant.",
+    }
 
     # Combine messages for the API call
     messages = [system_message] + chat_history
 
-    # Call OpenAI API for chat completion
+    # Call OpenAI API with streaming enabled
     chat_completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
         temperature=0.5,
         max_tokens=1024,
         top_p=1,
-        stream=False,
+        stream=True,  # Enable streaming
     )
 
-    # Extract and append assistant's response to chat history
-    assistant_response = chat_completion.choices[0].message.content
+    # Initialize an empty string to collect the assistant's response
+    assistant_response = ""
+
+    # Stream and process the response chunks
+    for chunk in chat_completion:
+        if chunk.choices and chunk.choices[0].delta.content:
+            content = chunk.choices[0].delta.content
+            print(content, end="", flush=True)  # Print streamed content in real-time
+            assistant_response += content
+
+    print()  # Newline after streaming completes
+
+    # Append assistant's response to history
     chat_history.append({"role": "assistant", "content": assistant_response})
 
     return assistant_response
@@ -43,7 +57,9 @@ def send_message(user_input):
 
 # Chat loop
 def chat_cli():
-    print("Welcome to Data Scientist Interview Assistant. Ask your question here or type 'exit' to quit.")
+    print(
+        "Welcome to Data Scientist Interview Assistant. Ask your question here or type 'exit' to quit."
+    )
 
     while True:
         user_input = input("You: ")
@@ -52,7 +68,7 @@ def chat_cli():
             break
 
         response = send_message(user_input)
-        print(f"Assistant: {response}\n")
+        print(f"\nAssistant: {response}\n")
 
 
 # Run the chat loop if this script is run directly

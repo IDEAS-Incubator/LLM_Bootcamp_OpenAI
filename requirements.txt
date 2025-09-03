@@ -1,3 +1,9 @@
-openai==1.86.0
+openai
 pandas
-sqlalchemy==2.0.41
+sqlalchemy
+python-dotenv
+numpy
+scikit-learn
+requests
+Pillow
+openai-agents
